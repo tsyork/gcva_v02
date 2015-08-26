@@ -3,9 +3,9 @@
  */
 var plan = require('flightplan');
 
-var appName = 'node-app';
+var appName = 'gcvanalytics';
 var username = 'deploy';
-var startFile = 'bin/www';
+var startFile = 'app.js';
 
 var tmpDir = appName+'-' + new Date().getTime();
 
@@ -20,7 +20,7 @@ plan.target('staging', [
 
 plan.target('production', [
   {
-    host: '104.131.93.215',
+    host: '70.35.194.136',
     username: username,
     agent: process.env.SSH_AUTH_SOCK
   },
