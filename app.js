@@ -8,7 +8,7 @@ app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'jade');
 
 var stormpathMiddleware = stormpath.init(app, {
-  apiKeyFile: './apiKey-6RBQX0BVN7PY50GYRHNAXSMYR.properties',
+  apiKeyFile: '../_priv/apiKey-1DB46OH4XTNQ1QP5OGM8XNHID.properties',
   application: 'https://api.stormpath.com/v1/applications/3F4F2drVsnl21Gm4VB0VUH',
   secretKey: '/KKYVV0+22mb5Ymbq83c5SN/Uo1hKcQDwzkh3u2MxVw',
   expandCustomData: true,
