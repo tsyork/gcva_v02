@@ -100,16 +100,22 @@ block vizblock
 
             script(type='text/javascript').
 
-                $('.my-dropdown').dropdown();
-                $('.my-dropdown').tooltip();
+                //$('.my-dropdown').dropdown();
+                //$('.my-dropdown').tooltip();
 
                 var viz, workbook;
                 var landingPages = ["Landing_page", "Deals Landing Page", "Investor Landing Page", "Search Landing Page", "Round Size", "Filters", "Library", "Glossary"];
                 var pos = 0;
                 window.onload = function () {
+
+                    console.log('#{ticket}')
+
+                    //http://<TableauServerName>/trusted/<unique ID from step 4>/t/<SiteName from step 3>/views/BusinessDashboard/AreaSalesPerformance
+
                     var vizDiv = document.getElementById('viz');
                     //      var vizURL = "https://10ay.online.tableau.com/#/site/gcvdealsdata/views/Subscription_Beta/Landing_page";
-                    var vizURL = "http://70.35.203.217/#/site/GCVAnalytics/views/Subscription_Product_dev/Landing_page?:embed=y:render=false";
+                    //var vizURL = "http://70.35.203.217/#/site/GCVAnalytics/views/Subscription_Product_dev/Landing_page?:embed=y:render=false";
+                    var vizURL = "http://70.35.203.217/trusted/#{ticket}/t/GCVAnalytics/views/Subscription_Product_dev/Landing_page?:embed=y:render=false";
                     var options = {
                         //        width: '1000px',
                         //        height: '540px',
@@ -165,8 +171,9 @@ block vizblock
                         alert(err.message);
                     }
                 };
-                var viewCompanyDetails = function (companyName) {
+                var viewCompanyDetails = function () {
                     try {
+                        //document.getElementById("fieldid").get
                         console.log("running switchViewCompany function");
                         workbook = viz.getWorkbook();
                         //         alert(workbook);

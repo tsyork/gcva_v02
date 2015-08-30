@@ -4,6 +4,7 @@ var csurf = require('csurf');
 var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErrors;
 var stormpath = require('express-stormpath');
 var extend = require('xtend');
+var request = require('request');
 
 // Declare the schema of our form:
 
@@ -18,21 +19,36 @@ var dashboardForm = forms.create({
   zip: forms.fields.string()
 });
 
+// set content-type header and data as json in args parameter
+//var args = {
+//  data: {username: "tyork@qbixanalytics.com"}
+//};
+
 // A render function that will render our form and
 // provide the values of the fields, as well
 // as any situation-specific locals
 
 function renderForm(req,res,locals){
+
+  var tableauUser = req.user.email;
+  console.log(tableauUser);
+
+  request.post({url:'http://70.35.203.217/trusted', form:{username:tableauUser,target_site:'GCVAnalytics'}}, function optionalCallback(err, httpResponse, body) {
+    if (err) {
+      return console.error('upload failed:', err);
+    }
+  //var ticket = {value: body} ;
+  //console.log(ticket);
+
+  console.log('rendering form');
+
   res.render('dashboard', extend({
     title: 'My dashboard',
-    csrfToken: req.csrfToken(),
-    givenName: req.user.givenName,
-    surname: req.user.surname,
-    streetAddress: req.user.customData.streetAddress,
-    city: req.user.customData.city,
-    state: req.user.customData.state,
-    zip: req.user.customData.zip
+    ticket: body
   },locals||{}));
+
+  });
+
 }
 
 // Export a function which will create the
@@ -48,6 +64,7 @@ module.exports = function dashboard(){
   // between GET and POST requests
 
   router.all('/', function(req, res) {
+
     dashboardForm.handle(req,{
       success: function(form){
         // The form library calls this success method if the
