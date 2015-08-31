@@ -26,6 +26,8 @@ app.use(express.static(path.join(__dirname,'resources')));
 
 app.use(stormpathMiddleware);
 
+console.log('message 1');
+
 // define routes
 
 app.get('/', function(req, res) {

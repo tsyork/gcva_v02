@@ -33,19 +33,24 @@ function renderForm(req,res,locals){
   var tableauUser = req.user.email;
   console.log(tableauUser);
 
-  request.post({url:'http://70.35.203.217/trusted', form:{username:tableauUser,target_site:'GCVAnalytics'}}, function optionalCallback(err, httpResponse, body) {
+  //request.post({url:'http://70.35.203.217/trusted', form:{username:tableauUser,target_site:'GCVAnalytics'}}, function optionalCallback(err, httpResponse, body) {
+  //  if (err) {
+  //    return console.error('upload failed:', err);
+  //  }
+
+  request.post({url:'http://localhost:8080/api/tickets', form:{email:tableauUser}}, function optionalCallback(err, httpResponse, body) {
     if (err) {
       return console.error('upload failed:', err);
     }
-  //var ticket = {value: body} ;
-  //console.log(ticket);
 
-  console.log('rendering form');
+    //var ticketValue = body ;
+    console.log(body);
+    console.log('rendering form');
 
-  res.render('dashboard', extend({
-    title: 'My dashboard',
-    ticket: body
-  },locals||{}));
+    res.render('dashboard', extend({
+      title: 'My dashboard',
+      ticket: body
+    },locals||{}));
 
   });
 
