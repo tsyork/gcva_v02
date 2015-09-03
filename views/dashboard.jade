@@ -144,16 +144,16 @@ block vizblock
                 };
                 window.onpopstate = function (event) {
                     console.log("running onpopstate function");
-                    //        console.log("location: " + document.location + ", state: " + event.state.pos + ", SheetName: " + event.state.sheetName);
-                    //      if(pos !== null){
-                    //        workbook.activateSheetAsync(event.state.sheetName);
-                    //      } else {
-                    //        sheetName = "Landing_page";
-                    //        workbook.activateSheetAsync(event.state.sheetName);
-                    //      }
-                    //      if(event.originalEvent.state!=null){
-                    //        alert("location: " + document.location);
-                    //      };
+                            console.log("location: " + document.location + ", state: " + event.state.pos + ", SheetName: " + event.state.sheetName);
+                          if(pos !== null){
+                            workbook.activateSheetAsync(event.state.sheetName);
+                          } else {
+                            sheetName = "Landing_page";
+                            workbook.activateSheetAsync(event.state.sheetName);
+                          }
+                          if(event.originalEvent.state!=null){
+                            alert("location: " + document.location);
+                          };
                 };
                 var switchView = function (sheetName) {
                     try {

@@ -45,16 +45,16 @@
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
     color: #fff;
-    background-color: #150958; /*gcv-blue*/
+    background-color: #555555; /*gcv-blue*/
 }
 
 .nav-pills > .active > a > .badge {
-    color: #150958;  /*gcv-blue*/
+    color: #555555;  /*gcv-blue*/
     background-color: #fff;
 }
 
 a {
-    color: #150958;
+    color: #555555;
     text-decoration: none;
 }
 
@@ -72,7 +72,7 @@ a {
     height: 3px;
     margin: 9px 0;
     overflow: hidden;
-    background-color: #150958;
+    background-color: #555555;
 }
 
 .gcv-limegreen {
