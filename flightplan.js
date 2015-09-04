@@ -3,7 +3,7 @@
  */
 var plan = require('flightplan');
 
-var appName = 'gcvanalytics';
+var appName = 'gcvanalytics_dev';
 var username = 'deploy';
 var startFile = 'app.js';
 

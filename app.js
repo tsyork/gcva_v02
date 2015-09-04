@@ -42,6 +42,6 @@ app.get('/', function(req, res) {
 
 app.use('/profile',stormpath.loginRequired,require('./profile')());
 app.use('/dashboard',stormpath.loginRequired,require('./dashboard')());
-app.listen(9000);
+app.listen(1337);
 
 module.exports = app;
