@@ -6,6 +6,7 @@ var plan = require('flightplan');
 var appName = 'gcvanalytics_dev';
 var username = 'deploy';
 var startFile = 'app.js';
+var foreverUid = 'dev';
 
 var tmpDir = appName+'-' + new Date().getTime();
 
@@ -55,6 +56,7 @@ plan.remote(function(remote) {
 
   remote.log('Reload application');
   remote.sudo('ln -snf ~/' + tmpDir + ' ~/'+appName, {user: username});
-//  remote.exec('forever stop ~/'+appName+'/'+startFile, {failsafe: true});
-//  remote.exec('forever start ~/'+appName+'/'+startFile);
+  //remote.exec('forever stop ~/'+appName+'/'+startFile, {failsafe: true});
+  remote.exec('forever stop '+foreverUid, {failsafe: true});
+  remote.exec('cd /home/'+username+'/'+appName+' && forever start --uid "'+foreverUid+'" --append '+startFile);
 });
