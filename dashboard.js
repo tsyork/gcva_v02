@@ -5,9 +5,6 @@ var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErro
 var stormpath = require('express-stormpath');
 var extend = require('xtend');
 var request = require('request');
-var localStorage = require('node-localstorage').LocalStorage;
-
-localStorage = new localStorage('./scratch');
 
 // Declare the schema of our form:
 
@@ -36,20 +33,14 @@ function renderForm(req,res,locals){
   var tableauUser = req.user.email;
   console.log(tableauUser);
 
-  //request.post({url:'http://70.35.203.217/trusted', form:{username:tableauUser,target_site:'GCVAnalytics'}}, function optionalCallback(err, httpResponse, body) {
-  //  if (err) {
-  //    return console.error('upload failed:', err);
-  //  }
-
   request.post({url:'http://70.35.194.136:9001/api/tickets', form:{email:tableauUser}}, function optionalCallback(err, httpResponse, body) {
     if (err) {
       return console.error('upload failed:', err);
     }
 
     //var ticketValue = body ;
-    //console.log(body);
-    localStorage.setItem('ticketValue',body);
-    //console.log(localStorage.getItem('ticketValue'));
+    console.log(body);
+    console.log('rendering form');
 
     res.render('dashboard', extend({
       title: 'My dashboard',
