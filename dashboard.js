@@ -5,6 +5,9 @@ var collectFormErrors = require('express-stormpath/lib/helpers').collectFormErro
 var stormpath = require('express-stormpath');
 var extend = require('xtend');
 var request = require('request');
+var localStorage = require('node-localstorage').LocalStorage;
+
+localStorage = new localStorage('./scratch');
 
 // Declare the schema of our form:
 
@@ -44,8 +47,9 @@ function renderForm(req,res,locals){
     }
 
     //var ticketValue = body ;
-    console.log(body);
-    console.log('rendering form');
+    //console.log(body);
+    localStorage.setItem('ticketValue',body);
+    //console.log(localStorage.getItem('ticketValue'));
 
     res.render('dashboard', extend({
       title: 'My dashboard',

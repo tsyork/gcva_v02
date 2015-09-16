@@ -26,8 +26,6 @@ app.use(express.static(path.join(__dirname,'resources')));
 
 app.use(stormpathMiddleware);
 
-console.log('message 1');
-
 // define routes
 
 app.get('/', function(req, res) {
@@ -42,6 +40,6 @@ app.get('/', function(req, res) {
 
 app.use('/profile',stormpath.loginRequired,require('./profile')());
 app.use('/dashboard',stormpath.loginRequired,require('./dashboard')());
-app.listen(1337);
+app.listen(9001);
 
 module.exports = app;

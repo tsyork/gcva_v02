@@ -3,10 +3,10 @@
  */
 var plan = require('flightplan');
 
-var appName = 'gcvanalytics_dev';
+var appName = 'gcvanalytics_stg';
 var username = 'deploy';
 var startFile = 'app.js';
-var foreverUid = 'dev';
+var foreverUid = 'stg';
 
 var tmpDir = appName+'-' + new Date().getTime();
 
